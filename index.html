@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Accessibility Legislation</title>
+    <style>
+        body {
+            font-family: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .timer {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown to Accessibility Legislation</h1>
+
+    <div class="timer">
+        <h2>🇪🇺 European Accessibility Act:</h2>
+        <p id="event2-timer"></p>
+        <p small><a href="https://employment-social-affairs.ec.europa.eu/policies-and-activities/social-protection-social-inclusion/persons-disabilities/union-equality-strategy-rights-persons-disabilities-2021-2030/european-accessibility-act_en">EN 301 549 Accessibility Requirements for Products and Services</a></p>
+    </div>
+
+    <div class="timer">
+        <h2>🇺🇸 Americans with Disabilities Act:</h2>
+        <p id="event1-timer"></p>
+        <p small><a href="https://www.justice.gov/opa/pr/justice-department-publish-final-rule-strengthen-web-and-mobile-app-access-people">Final rule under Title II of the Americans with Disabilities Act (ADA)</a></p>
+    </div>
+
+    <hr>
+    <footer>Made by <a href="https://www.linkedin.com/in/wgx/">Will Grant</a></footer>
+
+    <script>
+        // Set the date-times for the two events
+        const event1Date = new Date('2026-04-24T00:00:00');
+        const event2Date = new Date('2025-07-28T00:00:00');
+
+        // Function to update countdown timers
+        function updateCountdowns() {
+            const now = new Date();
+
+        // Calculate time remaining for event 1
+        const timeToEvent1 = event1Date - now;
+        const daysToEvent1 = Math.floor(timeToEvent1 / (1000 * 60 * 60 * 24));
+        const hoursToEvent1 = Math.floor((timeToEvent1 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutesToEvent1 = Math.floor((timeToEvent1 % (1000 * 60 * 60)) / (1000 * 60));
+        const secondsToEvent1 = Math.floor((timeToEvent1 % (1000 * 60)) / 1000);
+
+        // Calculate time remaining for event 2
+        const timeToEvent2 = event2Date - now;
+        const daysToEvent2 = Math.floor(timeToEvent2 / (1000 * 60 * 60 * 24));
+        const hoursToEvent2 = Math.floor((timeToEvent2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutesToEvent2 = Math.floor((timeToEvent2 % (1000 * 60 * 60)) / (1000 * 60));
+        const secondsToEvent2 = Math.floor((timeToEvent2 % (1000 * 60)) / 1000);
+
+        // Update HTML content
+        document.getElementById('event1-timer').textContent = 
+            `${daysToEvent1} days, ${hoursToEvent1} hours, ${minutesToEvent1} minutes, ${secondsToEvent1} seconds`;
+        document.getElementById('event2-timer').textContent = 
+            `${daysToEvent2} days, ${hoursToEvent2} hours, ${minutesToEvent2} minutes, ${secondsToEvent2} seconds`;
+        }
+
+        // Update countdowns every second
+        setInterval(updateCountdowns, 1000);
+
+        // Initial call to display countdowns immediately upon page load
+        updateCountdowns();
+    </script>
+</body>
+</html>
